@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Mail, Github, Linkedin, ChevronDown, FileUser } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Tooltip,
   TooltipContent,
@@ -20,10 +21,12 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <img
+          <Image
             src="/avatar.jpg"
             alt="Picture of Zachary Deak"
-            className=" h-32 w-32 sm:h-44 sm:w-44 squircle object-cover border border-border"
+            width={176}
+            height={176}
+            className="h-32 w-32 sm:h-44 sm:w-44 squircle object-cover border border-border"
           />
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold font-heading leading-tight">
             ZACHARY

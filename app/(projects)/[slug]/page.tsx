@@ -3,7 +3,6 @@ import { CustomMDX } from "@/app/components/mdx";
 import { getProjects } from "@/app/(projects)/utils";
 import { baseUrl } from "@/app/sitemap";
 import { Header } from "./header";
-import { Badge } from "@/components/ui/badge";
 import "./mdx.css";
 
 type ProjectsProps = {
@@ -14,7 +13,7 @@ type ProjectsProps = {
 
 export default async function ProjectPage({ params }: ProjectsProps) {
   const { slug } = await params;
-  let post = getProjects().find((post) => post.slug === slug);
+  const post = getProjects().find((post) => post.slug === slug);
 
   if (!post) {
     notFound();
@@ -56,7 +55,7 @@ export default async function ProjectPage({ params }: ProjectsProps) {
 }
 
 export async function generateStaticParams() {
-  let posts = getProjects();
+  const posts = getProjects();
 
   return posts.map((post) => ({
     slug: post.slug,
@@ -65,13 +64,13 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: ProjectsProps) {
   const { slug } = await params;
-  let post = getProjects().find((post) => post.slug === slug);
+  const post = getProjects().find((post) => post.slug === slug);
   if (!post) {
     return;
   }
 
-  let { title, description, image } = post.metadata;
-  let ogImage = image
+  const { title, description, image } = post.metadata;
+  const ogImage = image
     ? image
     : `${baseUrl}/og?title=${encodeURIComponent(title)}`;
 

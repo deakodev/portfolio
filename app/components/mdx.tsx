@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { highlight } from 'sugar-high'
 import React from 'react'
-import { Button, buttonVariants } from '@/components/ui/button'
+import { buttonVariants } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
 type TableProps = {
@@ -14,10 +14,10 @@ type TableProps = {
 }
 
 function Table({ data }: TableProps) {
-  let headers = data.headers.map((header: string, index: number) => (
+  const headers = data.headers.map((header: string, index: number) => (
     <th key={index} className="px-4 py-2 text-left border-b border-white/20">{header}</th>
   ))
-  let rows = data.rows.map((row: string[], index: number) => (
+  const rows = data.rows.map((row: string[], index: number) => (
     <tr key={index} className="border-b border-white/10">
       {row.map((cell: string, cellIndex: number) => (
         <td key={cellIndex} className="px-4 py-2">{cell}</td>
@@ -37,8 +37,14 @@ function Table({ data }: TableProps) {
   )
 }
 
-function CustomLink(props) {
-  let href = props.href
+type LinkProps = {
+  href: string
+  children: React.ReactNode
+  [key: string]: unknown
+}
+
+function CustomLink(props: LinkProps) {
+  const href = props.href
 
   if (href.startsWith('/')) {
     return (
@@ -58,7 +64,7 @@ function CustomLink(props) {
 type ImageProps = {
   alt?: string
   src: string
-  [key: string]: any
+  [key: string]: unknown
 }
 
 function RoundedImage(props: ImageProps) {
@@ -81,14 +87,14 @@ function RoundedImage(props: ImageProps) {
 type CodeProps = {
   children: string
   className?: string
-  [key: string]: any
+  [key: string]: unknown
 }
 
 function Code({ children, className, ...props }: CodeProps) {
   const isInline = !className?.includes('language-')
   
   if (isInline) {
-    let codeHTML = highlight(children)
+    const codeHTML = highlight(children)
     return (
       <code 
         className="bg-white/10 text-white px-1.5 py-0.5 rounded text-sm font-code"
@@ -102,7 +108,7 @@ function Code({ children, className, ...props }: CodeProps) {
   return <code className={className} {...props}>{children}</code>
 }
 
-function slugify(str) {
+function slugify(str: string) {
   return str
     .toString()
     .toLowerCase()
@@ -113,19 +119,17 @@ function slugify(str) {
     .replace(/\-\-+/g, '-') // Replace multiple - with single -
 }
 
-function createHeading(level) {
-  const Heading = ({ children }) => {
-    let slug = slugify(children)
+function createHeading(level: number) {
+  const Heading = ({ children }: { children: React.ReactNode }) => {
+    const slug = slugify(String(children))
     return React.createElement(
       `h${level}`,
       { id: slug },
-      [
-        React.createElement('a', {
-          href: `#${slug}`,
-          key: `link-${slug}`,
-          className: 'anchor',
-        }),
-      ],
+      React.createElement('a', {
+        href: `#${slug}`,
+        key: `link-${slug}`,
+        className: 'anchor',
+      }),
       children
     )
   }
@@ -162,7 +166,7 @@ type ActionButtonProps = {
   href: string
   target?: string
   children: React.ReactNode
-  [key: string]: any
+  [key: string]: unknown
 }
 
 function ActionButton({ href, target, children, ...props }: ActionButtonProps) {
@@ -197,7 +201,7 @@ function ActionButton({ href, target, children, ...props }: ActionButtonProps) {
   )
 }
 
-let components = {
+const components = {
   h1: createHeading(1),
   h2: createHeading(2),
   h3: createHeading(3),
@@ -212,7 +216,13 @@ let components = {
   ActionButton,
 }
 
-export function CustomMDX(props) {
+type CustomMDXProps = {
+  source: string
+  components?: Record<string, React.ComponentType<unknown>>
+  [key: string]: unknown
+}
+
+export function CustomMDX(props: CustomMDXProps) {
   return (
     <MDXRemote
       {...props}

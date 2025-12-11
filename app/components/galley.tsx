@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
 type GalleryProps = {
   projects: Array<{
@@ -47,9 +48,11 @@ export default function Gallery({ projects }: GalleryProps) {
                 transition={{ duration: 0.8, delay: index * 0.2 }}
               >
                 <div className="aspect-square overflow-hidden">
-                  <img
+                  <Image
                     src={project.metadata.image || "/placeholder.svg"}
                     alt={project.metadata.title}
+                    width={400}
+                    height={400}
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                 </div>

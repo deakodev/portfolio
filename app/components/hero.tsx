@@ -30,8 +30,8 @@ export default function Hero() {
           />
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold font-heading leading-tight">
             ZACHARY
-            <br />
-            DEAK, DO
+            <br className="leading-none" />
+            <span className="block -mt-4">DEAK, DO</span>
           </h1>
         </motion.div>
         <div className="w-1/2 h-px bg-gradient-to-r from-transparent via-gray-500 to-transparent mx-auto" />

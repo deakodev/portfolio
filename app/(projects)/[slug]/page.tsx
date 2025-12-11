@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { CustomMDX } from "@/app/components/mdx";
 import { getProjects } from "@/app/(projects)/utils";
-import { baseUrl } from "@/app/sitemap";
+import { baseUrl } from "@/app/config";
 import { Header } from "./header";
 import "./mdx.css";
 

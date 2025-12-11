@@ -1,0 +1,77 @@
+---
+title: 3D Rendering Engine
+featured: true
+tech:
+  ["C", "Odin", "Vulkan", "OpenGL", "Hot-reloading", "Plugins", "ECS", "GLSL"]
+image: /(bedbug)/bedbug.gif
+description: A modular 3D engine built in Odin with Vulkan support, dynamic plugin loading, and hot-reloadable game/editor layers.
+---
+
+<Video
+  kind="youtube"
+  youtubeId="hfYyK6yeG1I"
+  title="Bedbug Engine Overview"
+/>
+
+## Overview
+
+Bedbug is a custom-built 3D engine written in [Odin](https://odin-lang.org), designed for modularity, dynamic reloading, and graphics experimentation. It combines a Vulkan-based renderer, a plugin system for live-reloading DLLs, and a minimal ECS architecture—giving developers full control over memory, layout, and draw flow.
+
+The engine supports both OpenGL and Vulkan backends and is built from scratch without external game frameworks, enabling rapid iteration on rendering and tooling workflows for education, research, and simulation.
+
+![Bedbug engine render pipeline demo](/bedbug/bedbug.gif)
+
+## Architecture Summary
+
+### 1. **Core Modules**
+
+- **Renderer:** Vulkan-first with optional OpenGL fallback
+  - Explicit descriptor management, pipeline layouts, and render passes
+  - Custom abstraction for hot-swappable shaders using `#include` and stringified GLSL
+- **Memory:** Arena and freelist allocators, with debug overlays
+- **Platform:** Cross-platform window/input/event abstraction (based on GLFW)
+- **UI Layer:** Early experimental canvas with pixel-perfect draw calls
+
+### 2. **Dynamic Plugin System**
+
+- Game and editor logic live in hot-reloadable DLLs (`game.dll`, `editor.dll`)
+- Core communicates via tagged unions and plugin registries
+- Plugins compiled separately, reloaded in-place without restarting the app
+- Supports live code editing, memory patching, and serialized state transfer
+
+### 3. **Editor Integration** (In Progress)
+
+- In-engine entity inspector and scene graph
+- Live shader editing and render doc hooks
+- Timeline-based animation editor planned
+- Goal: A standalone editor powered entirely by `editor.dll`, launched from `futon.exe`
+
+## Key Features
+
+- Odin-native codebase (no bindings or wrappers)
+- Modular `pipeline_info` patching system for Vulkan setup
+- Runtime-configurable ECS with tagged components and prefab support
+- Custom logging, timing, and memory overlays
+- CLI toolchain using `make`, `premake5`, and `bash` scripting
+
+## Use Cases
+
+- Educational graphics demos
+- Custom medical visualization plugins (e.g., DICOM mesh viewer)
+- Tooling experiments for interactive learning environments
+- Minimal games and simulation prototypes
+
+## Demo
+
+
+
+---
+
+Let me know if you want a section for:
+
+- Shader hot-reloading
+- ECS design decisions
+- Odin-specific implementation notes
+- Plans for DICOM integration or MedStudForty plugin targets
+
+Or if you want to embed a screen-recorded YouTube demo.

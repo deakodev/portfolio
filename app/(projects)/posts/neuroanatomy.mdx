@@ -1,0 +1,73 @@
+---
+title: Tangible Neuroanatomy
+featured: true
+tech: [DCM, STL, Blender, AutoCAD, CNC Fabrication]
+description: "A reproducible workflow converting T1 MRI slices into tactile anatomical models for spatial learning in medical education."
+image: /(neuroanatomy)/neuroanatomy.gif
+---
+
+<Video kind="youtube" youtubeId="PnvgXQxWw_4" title="Tangible neuroanatomy" />
+
+## Overview
+
+This project bridges neuroimaging and physical fabrication to create an interactive, haptic learning tool for neuroanatomy. By converting a T1-weighted MRI slice into a 3D-embossed tactile map with conductive landmarks, the system enables game-based learning inspired by _Operation_, promoting spatial understanding through touch and immediate feedback.
+
+**Source data:** T1-weighted sagittal MRI from a healthy 20-year-old female ([case 37605](https://radiopaedia.org/cases/37605))
+
+![T1-weighted sagittal MRI slice](</(neuroanatomy)/sagittal_mri.png>)
+
+## Workflow Summary
+
+### 1. **DICOM/PNG to 3D Model**
+
+You can begin with a DICOM slice or a PNG image. If starting from DICOM, load the study into your prefered medical imaging software (eg, 3D Slicer) and export the desired slice as a PNG. Ensure 16-bit grayscale for maximum depth information.
+
+**Source options for free medical imaging:**
+
+- **The Cancer Imaging Archive (TCIA)**  
+  Free, de-identified clinical datasets across CT, MRI, PET, and more.  
+  https://www.cancerimagingarchive.net
+
+- **3D Slicer Sample Data (QIICR)**  
+  Small, high quality DICOM datasets ideal for testing and teaching.  
+  https://sampledata.slicer.org
+
+- **Radiopaedia Cases (some with DICOM downloads)**  
+  Not all cases include DICOM, but many do.  
+  https://radiopaedia.org
+
+![T1-weighted sagittal MRI png in blender](</(neuroanatomy)/sagittal_mri_blender.png>)
+
+**PNG to 3D Model** (Blender):
+
+- Import PNG as image texture in Blender
+- Create plane mesh and apply UV mapping
+- Add material with displacement/bump node using PNG as input
+- Apply modifiers to mesh:
+  - **Subdivision Surface:** Level 2 (Catmull-Clark) for smooth topology
+  - **Displace:** Strength 1.5–2.0 mm, texture coordinate set to UV
+  - **Solidify:** 10 mm thickness for structural integrity
+- Export as high-resolution STL for fabrication
+
+### 2. **CNC Fabrication**
+
+- **Material:** ¾″ maple board (16″ × 16″)
+- **Roughing pass:** ¼″ flat-end bit, 3 mm stepdown
+- **Finishing pass:** ⅛″ ball-end bit for fine detail
+- **Duration:** ~12 hours
+- **Post-processing:** Sanding up to 220 grint, stain and oil finish
+
+<br />
+
+<Video kind="youtube" youtubeId="ZIQaa9cHENY" title="CNC timelapse" />
+
+### 3. **Interactive Electronics** (In Progress)
+
+- Identify 32 key anatomical landmarks (e.g., corpus callosum, thalamus, cerebellar vermis)
+- Drill holes and insert 8-gauge copper wire at each landmark
+- Connect to Arduino Uno circuit for stylus-contact detection
+- Provide feedback via piezo buzzer and 16×2 LCD (displays structure name)
+
+## Contact
+
+Questions about this workflow? Feel free to reach out.

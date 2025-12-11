@@ -1,0 +1,89 @@
+---
+title: Command-Line Password Manager
+featured: false
+tech: ["CLI", "Security", "Encryption", "Password Management"]
+description: A secure, terminal-based password manager with encryption, key derivation, and a simple command-line interface for managing credentials.
+image: /(enpass)/enpass.png
+---
+
+![Enpass Password Manager](/(enpass)/enpass.png)
+
+## Overview
+
+Enpass is a lightweight, command-line password manager designed for developers and terminal users who prefer a fast, secure way to manage their credentials without leaving the command line. Built with security and simplicity in mind, it provides encryption, secure storage, and an intuitive CLI interface.
+
+## Key Features
+
+### Security
+
+- **Strong Encryption:** Uses industry-standard encryption (AES-256) for password storage
+- **Key Derivation:** PBKDF2 or Argon2 for key derivation from master password
+- **Secure Storage:** Encrypted vault file with authenticated encryption
+- **No Cloud Dependency:** All data stored locally, under your control
+
+### Command-Line Interface
+
+- **Simple Commands:** Intuitive CLI for common operations
+- **Quick Access:** Fast password retrieval and generation
+- **Search Functionality:** Efficient search across stored credentials
+- **Copy to Clipboard:** Secure password copying with auto-clear
+
+### Password Management
+
+- **Password Generation:** Configurable password generator with various options
+- **Category Organization:** Organize passwords by categories (websites, apps, etc.)
+- **Metadata Support:** Store additional information (usernames, URLs, notes)
+- **Import/Export:** Support for importing from other password managers
+
+## Core Commands
+
+```bash
+# Add a new password entry
+enpass add example.com
+
+# Retrieve a password
+enpass get example.com
+
+# Generate a new password
+enpass generate --length 20 --symbols
+
+# List all entries
+enpass list
+
+# Search entries
+enpass search "github"
+
+# Update an entry
+enpass update example.com
+```
+
+## Architecture
+
+**Security Model:**
+- Master password used to derive encryption key
+- Encrypted vault file stored locally
+- Memory-safe password handling
+- Secure deletion of sensitive data
+
+**Storage Format:**
+- Encrypted JSON or binary format
+- Support for multiple vault files
+- Backup and sync capabilities
+
+## Use Cases
+
+- Developer workflow integration
+- Server and infrastructure credential management
+- Automated script credential access
+- Terminal-first user experience
+
+## Security Considerations
+
+- Master password never stored or transmitted
+- Encryption keys derived using secure key derivation functions
+- Passwords cleared from memory after use
+- Secure file permissions on vault storage
+
+## Visit
+
+Check out the source code and contribute on [GitHub](https://github.com/deakodev/enpass).

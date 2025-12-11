@@ -1,0 +1,70 @@
+---
+title: OCaml Logging Library
+featured: false
+tech: ["OCaml", "Functional Programming", "Logging", "Library"]
+description: A lightweight, type-safe logging library for OCaml with structured logging support and configurable output handlers.
+image: /(echo)/echo.jpg
+---
+
+![Echo Logging Library](/(echo)/echo.jpg)
+
+## Overview
+
+Echo is a modern logging library for OCaml that provides type-safe, structured logging capabilities. Built with functional programming principles, it offers a clean API for application logging with support for multiple output handlers, log levels, and structured data formatting.
+
+## Key Features
+
+### Type-Safe Logging
+
+- Strongly-typed logging API that prevents common logging errors at compile time
+- Support for structured logging with key-value pairs
+- Compile-time log level filtering for zero-cost abstractions
+
+### Flexible Output Handlers
+
+- Console output with colorized formatting
+- File-based logging with rotation support
+- Custom handler support for integration with external systems
+- Configurable formatting (JSON, plain text, custom formats)
+
+### Performance
+
+- Zero-cost abstractions when log levels are disabled
+- Efficient string formatting and buffering
+- Minimal runtime overhead
+
+## Architecture
+
+**Language:** OCaml with functional programming patterns
+
+**Core Components:**
+- Logger module with type-safe API
+- Handler system for output routing
+- Formatter system for log message formatting
+- Configuration module for runtime setup
+
+## Use Cases
+
+- Application debugging and monitoring
+- Production logging with structured data
+- Development tooling and diagnostics
+- Integration with logging aggregation services
+
+## Example Usage
+
+```ocaml
+open Echo
+
+let logger = Logger.create ~name:"my_app" ()
+
+let () =
+  Logger.info logger "Application started" [];
+  Logger.debug logger "Processing request" 
+    [("user_id", Int 123); ("path", String "/api/data")];
+  Logger.error logger "Failed to connect" 
+    [("error", String "Connection timeout")]
+```
+
+## Visit
+
+Check out the source code and documentation on [GitHub](https://github.com/deakodev/echo).

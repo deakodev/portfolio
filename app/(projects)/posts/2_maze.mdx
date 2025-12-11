@@ -1,0 +1,69 @@
+---
+title: Depth-First Maze Algorithm
+featured: false
+tech: ["Python", "Data Structures & Algorithms", "Depth-First Search", "Maze Generation"]
+description: An interactive visualization of maze generation using the depth-first search algorithm with real-time rendering.
+image: /(maze)/maze.gif
+---
+
+![Maze Generation Visualization](/(maze)/maze.gif)
+
+## Overview
+
+A visual implementation of maze generation using the depth-first search (DFS) algorithm. This project demonstrates the classic recursive backtracking approach to creating perfect mazes, with real-time visualization of the generation process.
+
+## Key Features
+
+### Algorithm Implementation
+
+- **Recursive Backtracking:** Classic DFS maze generation algorithm
+- **Perfect Mazes:** Guarantees a single unique path between any two points
+- **Configurable Grid Size:** Adjustable maze dimensions
+- **Multiple Generation Modes:** Support for different maze styles and patterns
+
+### Visualization
+
+- Real-time rendering of maze generation process
+- Step-by-step animation showing the algorithm's progress
+- Color-coded visualization of visited cells, current path, and walls
+- Interactive controls for speed adjustment and regeneration
+
+### Technical Details
+
+- Efficient data structures for grid representation
+- Optimized rendering for smooth animations
+- Support for different cell shapes (square, hexagonal, etc.)
+- Export functionality for generated mazes
+
+## Algorithm Explanation
+
+The depth-first search maze generation algorithm works by:
+
+1. Starting with a grid of cells, all initially unvisited
+2. Choosing a starting cell and marking it as visited
+3. Randomly selecting an unvisited neighbor
+4. Removing the wall between the current cell and the chosen neighbor
+5. Recursively continuing from the neighbor
+6. When no unvisited neighbors exist, backtracking to find new paths
+7. Continuing until all cells are visited
+
+This process creates a perfect maze with exactly one path between any two points.
+
+## Use Cases
+
+- Algorithm visualization and education
+- Game development (procedural level generation)
+- Pathfinding algorithm testing
+- Computer science education and demonstrations
+
+## Architecture
+
+**Core Components:**
+- Grid data structure for maze representation
+- DFS algorithm implementation
+- Rendering engine for visualization
+- Animation system for step-by-step display
+
+## Visit
+
+Explore the implementation and try it yourself on [GitHub](https://github.com/deakodev/maze).

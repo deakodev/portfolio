@@ -15,13 +15,11 @@ description: A modular 3D engine built in Odin with Vulkan support, dynamic plug
 
 ## Overview
 
-Bedbug is a custom-built 3D engine written in [Odin](https://odin-lang.org), designed for modularity, dynamic reloading, and graphics experimentation. It combines a Vulkan-based renderer, a plugin system for live-reloading DLLs, and a minimal ECS architecture—giving developers full control over memory, layout, and draw flow.
+Bedbug is a custom-built 3D engine written in C & [Odin](https://odin-lang.org), designed for modularity, dynamic reloading, and graphics experimentation. It combines a Vulkan-based renderer, a plugin system for live-reloading DLLs, and a minimal ECS architecture, giving developers full control over memory, layout, and draw flow.
 
 The engine supports both OpenGL and Vulkan backends and is built from scratch without external game frameworks, enabling rapid iteration on rendering and tooling workflows for education, research, and simulation.
 
-![Bedbug engine render pipeline demo](/bedbug/bedbug.gif)
-
-## Architecture Summary
+## Architecture
 
 ### 1. **Core Modules**
 
@@ -60,18 +58,3 @@ The engine supports both OpenGL and Vulkan backends and is built from scratch wi
 - Custom medical visualization plugins (e.g., DICOM mesh viewer)
 - Tooling experiments for interactive learning environments
 - Minimal games and simulation prototypes
-
-## Demo
-
-
-
----
-
-Let me know if you want a section for:
-
-- Shader hot-reloading
-- ECS design decisions
-- Odin-specific implementation notes
-- Plans for DICOM integration or MedStudForty plugin targets
-
-Or if you want to embed a screen-recorded YouTube demo.

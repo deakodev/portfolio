@@ -10,60 +10,36 @@ image: /(maze)/maze.gif
 
 ## Overview
 
-A visual implementation of maze generation using the depth-first search (DFS) algorithm. This project demonstrates the classic recursive backtracking approach to creating perfect mazes, with real-time visualization of the generation process.
+A Python implementation of maze generation using the depth-first search (DFS) algorithm with real-time visualization. This project demonstrates recursive backtracking to create perfect mazes—guaranteeing exactly one unique path between any two points.
 
 ## Key Features
 
-### Algorithm Implementation
+- **Recursive Backtracking:** Classic DFS algorithm implementation
+- **Perfect Mazes:** Single unique path between any two points
+- **Real-Time Visualization:** Step-by-step animation with color-coded cells
+- **Interactive Controls:** Adjustable speed and regeneration
+- **Flexible Configuration:** Customizable grid sizes and cell shapes
+- **Export Functionality:** Save generated mazes for later use
 
-- **Recursive Backtracking:** Classic DFS maze generation algorithm
-- **Perfect Mazes:** Guarantees a single unique path between any two points
-- **Configurable Grid Size:** Adjustable maze dimensions
-- **Multiple Generation Modes:** Support for different maze styles and patterns
+## How It Works
 
-### Visualization
+The algorithm starts with an unvisited grid and recursively:
 
-- Real-time rendering of maze generation process
-- Step-by-step animation showing the algorithm's progress
-- Color-coded visualization of visited cells, current path, and walls
-- Interactive controls for speed adjustment and regeneration
+1. Marks the current cell as visited
+2. Randomly selects an unvisited neighbor
+3. Removes the wall between cells
+4. Recursively continues from the neighbor
+5. Backtracks when no unvisited neighbors remain
 
-### Technical Details
-
-- Efficient data structures for grid representation
-- Optimized rendering for smooth animations
-- Support for different cell shapes (square, hexagonal, etc.)
-- Export functionality for generated mazes
-
-## Algorithm Explanation
-
-The depth-first search maze generation algorithm works by:
-
-1. Starting with a grid of cells, all initially unvisited
-2. Choosing a starting cell and marking it as visited
-3. Randomly selecting an unvisited neighbor
-4. Removing the wall between the current cell and the chosen neighbor
-5. Recursively continuing from the neighbor
-6. When no unvisited neighbors exist, backtracking to find new paths
-7. Continuing until all cells are visited
-
-This process creates a perfect maze with exactly one path between any two points.
+This process continues until all cells are visited, creating a perfect maze with guaranteed connectivity.
 
 ## Use Cases
 
 - Algorithm visualization and education
-- Game development (procedural level generation)
+- Procedural level generation for games
 - Pathfinding algorithm testing
-- Computer science education and demonstrations
-
-## Architecture
-
-**Core Components:**
-- Grid data structure for maze representation
-- DFS algorithm implementation
-- Rendering engine for visualization
-- Animation system for step-by-step display
+- Computer science demonstrations
 
 ## Visit
 
-Explore the implementation and try it yourself on [GitHub](https://github.com/deakodev/maze).
+Explore the implementation and try it yourself on [GitHub](https://github.com/deakodev/maze_solver).
